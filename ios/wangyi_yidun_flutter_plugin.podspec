@@ -17,6 +17,7 @@ A new Flutter plugin.
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
   s.dependency 'NTESVerifyCode'
+  s.static_framework = true
   s.platform = :ios, '8.0'
 
   # Flutter.framework does not contain a i386 slice.
