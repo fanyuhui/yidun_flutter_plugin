@@ -53,9 +53,9 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  Future<void> showCaptcha() async {
-    await WangyiYidunFlutterPlugin.showCaptcha('deecf3951a614b71b4b1502c072be1c1');
-    if (!mounted) return;
+    void showCaptcha() async {
+     // WangyiYidunFlutterPlugin.showCaptcha('deecf3951a614b71b4b1502c072be1c1');
+    WangyiYidunFlutterPlugin.setup(appKey: 'deecf3951a614b71b4b1502c072be1c1');
   }
 
   @override

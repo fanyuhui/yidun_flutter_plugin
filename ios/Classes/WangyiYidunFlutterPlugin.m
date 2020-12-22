@@ -45,17 +45,19 @@
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([@"show" isEqualToString:call.method]) {
         result(@"成功");
-    } else if ([@"showCaptcha" isEqualToString:call.method]) {
-        NSDictionary *dict = call.arguments;
-        self.captchaId = dict[@"captchaId"];
-        [self showCaptcha];
+    } else if ([@"setup" isEqualToString:call.method]) {
+        [self setup:call result:result];
     } else {
         result(FlutterMethodNotImplemented);
     }
 }
+- (void)setup:(FlutterMethodCall*)call result:(FlutterResult)result {
+    NSLog(@"setup:");
+    NSDictionary *arguments = call.arguments;
+    [self showCaptchaWith:arguments];
+}
 
-
-- (void)showCaptcha {
+- (void)showCaptchaWith:(NSDictionary *)arguments {
     self.manager =  [NTESVerifyCodeManager getInstance];
     if (self.manager) {
         
@@ -65,7 +67,7 @@
         // captchaid的值是每个产品从后台生成的,比如 @"a05f036b70ab447b87cc788af9a60974"
         
         // 传统验证码 @"deecf3951a614b71b4b1502c072be1c1";
-        NSString *captchaid = _captchaId;
+        NSString *captchaid =[self getText:arguments text:@"appKey"];
         self.manager.mode = NTESVerifyCodeNormal;
         
         // 无感知验证码
@@ -91,17 +93,36 @@
         self.manager.fallBackCount = 3;
         
         // 是否隐藏关闭按钮
-        self.manager.closeButtonHidden = YES;
+        self.manager.closeButtonHidden = [self getCloseButtonHidden:arguments];
+    
         
+        self.manager.slideIconURL = [self getText:arguments text:@"slideIconURL"];
+        self.manager.slideIconSuccessURL = [self getText:arguments text:@"slideIconSuccess"];
+        self.manager.slideIconMovingURL = [self getText:arguments text:@"slideIconMoving"];
+        self.manager.slideIconErrorURL = [self getText:arguments text:@"slideIconError"];
         
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"icon_loading" ofType:@"gif"];
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:[self getText:arguments text:@"loadingImage"] ofType:[self getText:arguments text:@"loadingType"]];
         NSData *imageData = [NSData dataWithContentsOfFile:bundlePath];
         [self.manager configLoadingImage:nil gifData:imageData];
-        [self.manager configLoadingText:@"加载中"];
+        [self.manager configLoadingText:[self getText:arguments text:@"loadingText"]];
         
         // 显示验证码
         [self.manager openVerifyCodeView:nil];
     }
+}
+
+- (NSString *)getText:(NSDictionary *)arguments text:(NSString *)text{
+    NSString *temp = arguments[text];
+    if ([temp isKindOfClass:[NSNull class]]) {
+        return @"";
+    }
+    return temp;
+}
+- (BOOL)getCloseButtonHidden:(NSDictionary *)arguments{
+    if ([arguments[@"closeButton"] isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    return arguments[@"closeButton"];
 }
 
 #pragma mark - NTESVerifyCodeManagerDelegate

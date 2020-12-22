@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   NTESVerifyCode: 1bb76683eefcd99da42bdb22d11ab24e9baeb171
-  wangyi_yidun_flutter_plugin: cb09f09738ed88e60ec747d23bc274d839c121c9
+  wangyi_yidun_flutter_plugin: ea79582f6a26a5314307f4c107a9e10ed2b5c2da
 
 PODFILE CHECKSUM: 8e679eca47255a8ca8067c4c67aab20e64cb974d
 
