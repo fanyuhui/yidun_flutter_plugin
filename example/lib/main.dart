@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     eventChannel.receiveBroadcastStream().listen(_onData, onError: _onError);
-    initPlatformState();
+//    initPlatformState();
   }
 
   void _onData(response) {
