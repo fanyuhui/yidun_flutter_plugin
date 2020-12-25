@@ -95,16 +95,14 @@
         // 是否隐藏关闭按钮
         self.manager.closeButtonHidden = [self getCloseButtonHidden:arguments];
     
-        
         self.manager.slideIconURL = [self getText:arguments text:@"slideIconURL"];
-        self.manager.slideIconSuccessURL = [self getText:arguments text:@"slideIconSuccess"];
         self.manager.slideIconMovingURL = [self getText:arguments text:@"slideIconMoving"];
         self.manager.slideIconErrorURL = [self getText:arguments text:@"slideIconError"];
         
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:[self getText:arguments text:@"loadingImage"] ofType:[self getText:arguments text:@"loadingType"]];
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"icon_loading" ofType:@"gif"];
         NSData *imageData = [NSData dataWithContentsOfFile:bundlePath];
         [self.manager configLoadingImage:nil gifData:imageData];
-        [self.manager configLoadingText:[self getText:arguments text:@"loadingText"]];
+        [self.manager configLoadingText:@"安全验证"];
         
         // 显示验证码
         [self.manager openVerifyCodeView:nil];

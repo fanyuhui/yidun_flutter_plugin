@@ -14,11 +14,8 @@ class WangyiYidunFlutterPlugin {
 
   /*
      appKey  验证码
-     loadingImage 自定义loading
-     loadingType loading的类型 支持 gif png jpg
      loadingText 加载文字
      slideIcon        滑块图片image
-     slideIconSuccess   滑动成功 image
      slideIconMoving  滑动中image
      slideIconError 滑动错误image
     */
@@ -26,22 +23,14 @@ class WangyiYidunFlutterPlugin {
   static Future<Void> setup({
     String appKey,
     bool closeButton,
-    String loadingImage,
-    String loadingType,
-    String loadingText,
     String slideIcon,
-    String slideIconSuccess,
     String slideIconMoving,
     String slideIconError,
   }) {
     Map<String, Object> map = {
       'appKey': appKey,
       'closeButton': closeButton,
-      'loadingImage': loadingImage,
-      'loadingType': loadingType,
-      'loadingText': loadingText,
       'slideIcon': slideIcon,
-      'slideIconSuccess': slideIconSuccess,
       'slideIconMoving': slideIconMoving,
       'slideIconError': slideIconError,
     };
