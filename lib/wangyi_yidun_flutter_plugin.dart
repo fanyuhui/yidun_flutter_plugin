@@ -1,15 +1,19 @@
 import 'dart:async';
 import 'dart:ffi';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 class WangyiYidunFlutterPlugin {
-
   static const MethodChannel _channel = const MethodChannel('wangyi_yidun_flutter_plugin');
 
   // 测试通道是否成功
   static Future<String> get platformVersion async {
     return await _channel.invokeMethod('show');
+  }
+
+  static Future<String> getDemo() async {
+    return await _channel.invokeMethod('getDemo');
   }
 
   /*
@@ -24,27 +28,20 @@ class WangyiYidunFlutterPlugin {
     */
 
   static Future<Void> setup({
-    String appKey,
-    bool closeButton,
-    String loadingImage,
-    String loadingType,
-    String loadingText,
-    String slideIcon,
-    String slideIconSuccess,
-    String slideIconMoving,
-    String slideIconError,
+    @required String appKey,
+    bool closeButton = false,
+    String slideIcon = '',
+    String slideIconSuccess = '',
+    String slideIconMoving = '',
+    String slideIconError = '',
   }) {
     Map<String, Object> map = {
       'appKey': appKey,
       'closeButton': closeButton,
-      'loadingImage': loadingImage,
-      'loadingType': loadingType,
-      'loadingText': loadingText,
       'slideIcon': slideIcon,
-      'slideIconSuccess': slideIconSuccess,
       'slideIconMoving': slideIconMoving,
       'slideIconError': slideIconError,
     };
-  return  _channel.invokeMethod('setup', map);
+    return _channel.invokeMethod('setup', map);
   }
 }
