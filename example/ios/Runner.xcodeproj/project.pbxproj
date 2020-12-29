@@ -50,6 +50,7 @@
 		990B52028AB01997F9FD4174 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		AA207A44D81924B5CB6AF415 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		EA347DCC2590C4DC0007503B /* icon_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = icon_loading.gif; sourceTree = "<group>"; };
+		EA963B512595901E00ED1436 /* 123.svga */ = {isa = PBXFileReference; lastKnownFileType = file; path = 123.svga; sourceTree = "<group>"; };
 		F569BF8DDFAEC8A286AD6234 /* libPods-Runner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Runner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -98,6 +99,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				EA963B512595901E00ED1436 /* 123.svga */,
 				EA347DCC2590C4DC0007503B /* icon_loading.gif */,
 				7AFFD8ED1D35381100E5BB4D /* AppDelegate.h */,
 				7AFFD8EE1D35381100E5BB4D /* AppDelegate.m */,
